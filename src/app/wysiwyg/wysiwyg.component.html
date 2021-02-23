@@ -1,0 +1,40 @@
+<div class="wrapper">
+    <div class="division left">
+        <mat-card class="page-header-card">
+            <mat-form-field class="page-header-input" color='accent'>
+                <mat-label>Title</mat-label>
+                <input matInput [formControl]='titleControl' (input)='_editTitle()' />
+            </mat-form-field>
+            <mat-form-field class="page-header-input" disabled color='accent'>
+                <mat-label>Date/Time</mat-label>
+                <input matInput [formControl]='dateControl' />
+            </mat-form-field>
+            <mat-form-field class="page-header-input" color='accent'>
+                <mat-label>Topic</mat-label>
+                <input matInput [formControl]='topicControl' (input)='_editTopic()' />
+            </mat-form-field>
+            <mat-form-field class="page-header-input" color='accent'>
+                <mat-label>Tags</mat-label>
+                <input matInput [formControl]='tagsControl' (input)='_editTags()' />
+            </mat-form-field>
+
+            <button mat-raised-button class="confirm-button" color='accent'>
+                Upload page
+            </button>
+
+
+
+        </mat-card>
+        <mat-form-field highlight-js appearance='outline' class="content-editor-box" color='accent'>
+            <textarea matInput class="content-editor" [formControl]='contentControl' (input)='_editContent()'
+                cdkTextareaAutosize #autosize="cdkTextareaAutosize">
+                </textarea>
+        </mat-form-field>
+        <!-- <ngx-codemirror #codemirror [ngModel]="editor.content" (ngModelChange)="testEditorContent($event)">
+        </ngx-codemirror> -->
+
+    </div>
+    <div class="division right">
+        <blog-page [page]='editor'></blog-page>
+    </div>
+</div>

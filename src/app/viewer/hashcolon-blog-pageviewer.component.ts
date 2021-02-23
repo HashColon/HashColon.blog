@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Renderer2, ElementRef, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { PageManagerService } from '@blog/services/page-manager.service';
-import * as PageUtil from '@blog/services/page-manager-utility';
+import * as PageUtil from '@blog/builder/page-manager-utility';
 
 @Component({
   selector: 'hashcolon-blog-pageviewer',

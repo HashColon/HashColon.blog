@@ -1,17 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HashcolonBlogHomeComponent } from '@blog/hashcolon-blog-home.component';
-import { HashcolonBlogViewerComponent } from '@blog/hashcolon-blog-viewer.component';
+import { HashcolonBlogHomeComponent } from '@blog/home/hashcolon-blog-home.component';
+import { HashcolonBlogViewerComponent } from '@blog/viewer/hashcolon-blog-viewer.component';
+import { WysiwygComponent } from '@blog/wysiwyg/wysiwyg.component';
 
-const routes: Routes = [
-  { path: 'blog', redirectTo: '/blog/viewer', pathMatch: 'full' },
-  { path: 'blog/home', component: HashcolonBlogHomeComponent },
-  { path: 'blog/viewer', component: HashcolonBlogViewerComponent }
-];
+
+const routes: Routes = [{
+  path: 'blog',
+  //redirectTo: '/blog/viewer', pathMatch: 'full',
+  children: [
+    { path: 'home', component: HashcolonBlogHomeComponent },
+    { path: 'viewer', component: HashcolonBlogViewerComponent },
+    { path: 'newpage', component: WysiwygComponent }
+  ]
+}];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class BlogRoutingModule { }

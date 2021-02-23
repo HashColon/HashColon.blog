@@ -1,0 +1,20 @@
+<h1>
+    <span class="page-title">
+        <b>{{page.header.title}}</b>
+    </span>
+</h1>
+
+<span class="page-datetime">
+    {{page.header.datetime}}
+</span>
+
+<span class="page-topic">
+    {{page.header.topic}}
+</span>
+
+<div class="page-content" [innerHTML]='page.content'>
+</div>
+
+<div class="page-tags">
+    {{page.header.tags}}
+</div>
