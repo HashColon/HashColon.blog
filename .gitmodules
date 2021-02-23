@@ -1,0 +1,3 @@
+[submodule "src/app/builder"]
+	path = src/app/builder
+	url = https://github.com/HashColon/HashColon.blog.builder.git
