@@ -4,13 +4,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MaterialModule } from '@blog/material.module';
+import { CodemirrorEditorComponent } from './wysiwyg/codemirror-editor.component';
+
+import { BackendConnectorModule } from '@HashColonBackend/backend-connector.module';
 
 import { BlogRoutingModule } from '@blog/blog-routing.module';
 import { HashcolonBlogHomeComponent } from '@blog/home/hashcolon-blog-home.component';
 import { HashcolonBlogViewerComponent } from '@blog/viewer/hashcolon-blog-viewer.component';
 import { BlogPageComponent } from '@blog/page/blog-page.component';
 import { WysiwygComponent } from '@blog/wysiwyg/wysiwyg.component';
-import { CodemirrorEditorComponent } from './wysiwyg/codemirror-editor.component';
+
 
 @NgModule({
   declarations: [
@@ -20,10 +23,10 @@ import { CodemirrorEditorComponent } from './wysiwyg/codemirror-editor.component
     CodemirrorEditorComponent],
   imports: [
     CommonModule, HttpClientModule,
-    MaterialModule,
+    MaterialModule, ReactiveFormsModule,
     // HighlightModule,
-    BlogRoutingModule,
-    ReactiveFormsModule
+    BlogRoutingModule, BackendConnectorModule
+
   ],
   // providers: [
   //   {

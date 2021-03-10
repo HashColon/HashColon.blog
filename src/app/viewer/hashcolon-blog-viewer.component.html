@@ -36,8 +36,8 @@
 
                 </div>
 
-                <button mat-mini-fab color="primary" (click)="isNewpageMode=!isNewpageMode"
-                    class="fab-button add-button">
+                <button *ngIf="backend.isSocketReady" mat-mini-fab color="primary"
+                    (click)="isNewpageMode=!isNewpageMode" class="fab-button add-button">
                     <mat-icon>{{isNewpageMode?'replay':'add'}}</mat-icon>
                 </button>
             </mat-sidenav-content>

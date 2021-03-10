@@ -19,6 +19,12 @@
     "paths": {
       "@blog/*": [
         "src/app/*"
+      ],
+      "@blog-builder/*": [
+        "src/app/builder/*"
+      ],
+      "@HashColonBackend/*": [
+        "src/app/backendconnector/src/app/*"
       ]
     }
   }

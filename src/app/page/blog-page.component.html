@@ -15,7 +15,9 @@
     <br />
 
     <span class="page-topic" *ngIf="page && page.header && page.header.topic">
-        <mat-chip color="primary" selected>{{page.header.topic}}</mat-chip>
+        <mat-chip *ngIf="!(!page.header.topic || page.header.topic=='')" color="primary" selected>
+            {{page.header.topic}}
+        </mat-chip>
     </span>
 
     <br /><br />

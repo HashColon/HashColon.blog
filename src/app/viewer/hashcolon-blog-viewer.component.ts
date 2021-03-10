@@ -3,6 +3,7 @@ import { MatSelectionList, MatSelectionListChange } from '@angular/material/list
 import { PageManagerService } from '@blog/services/page-manager.service';
 import { PageFormat } from '@blog/services/page-format';
 import * as PageUtil from '@blog-builder/page-manager-utility';
+import { BackendConnectorService } from '@HashColonBackend/backend-connector.service';
 import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
@@ -31,7 +32,8 @@ export class HashcolonBlogViewerComponent implements OnInit {
   isNewpageMode: boolean = false;
 
   constructor(
-    private pageMgr: PageManagerService
+    private pageMgr: PageManagerService,
+    public backend: BackendConnectorService
   ) {
     this.pageContent = { header: {}, content: '' };
     this.pageMgr.getHTML(this.blogHeaderList)

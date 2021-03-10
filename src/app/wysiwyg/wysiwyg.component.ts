@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { BlogPageComponent } from '@blog/page/blog-page.component';
 import { PageFormat } from '@blog/services/page-format';
-//import { BackendConnectorService } from '@HashColon'
+
 
 @Component({
   selector: 'blog-wysiwyg',
@@ -10,7 +10,6 @@ import { PageFormat } from '@blog/services/page-format';
   styleUrls: ['./wysiwyg.component.scss']
 })
 export class WysiwygComponent implements OnInit {
-  //@ViewChild('codemirrorEditorView') codeEditorView: ElementRef;
   @ViewChild(BlogPageComponent) pageView: BlogPageComponent;
 
   editor: PageFormat = {
@@ -25,7 +24,6 @@ export class WysiwygComponent implements OnInit {
   topicControl: FormControl;
   tagsControl: FormControl;
   dateControl: FormControl;
-  contentControl: FormControl;
 
   constructor() {
   }
@@ -34,7 +32,6 @@ export class WysiwygComponent implements OnInit {
     this.titleControl = new FormControl();
     this.topicControl = new FormControl();
     this.tagsControl = new FormControl();
-    this.contentControl = new FormControl();
     this.dateControl = new FormControl();
   }
 
@@ -43,15 +40,11 @@ export class WysiwygComponent implements OnInit {
   }
 
   _editTags() {
-
+    this.editor.header.tags = this.tagsControl.value.split(',');
   }
 
   _editTopic() {
-
-  }
-
-  _editContent() {
-    this.editor.content = this.contentControl.value;
+    this.editor.header.topic = this.topicControl.value;
   }
 
   testEditorContent(e) {
