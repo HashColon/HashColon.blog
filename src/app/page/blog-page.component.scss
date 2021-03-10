@@ -1,0 +1,29 @@
+
+.wrapper{
+    width:calc(100% - 40px);        
+    max-width: 1280px;
+    padding: 40px 20px 20px 20px;    
+    margin: auto; 
+    overflow: hidden;    
+    word-break: break-word;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.page-title{
+    font-family: Lato-BlackItalic, 'Jal Haru', 'Jal Onuel';
+    font-size: 2.3em;    
+}
+
+.page-datetime{
+    font-family: Lato-Italic ;
+    font-size: 0.8em;    
+    float: right;
+}
+
+.page-topic{
+    font-family: Lato-Italic ;    
+    font-size: 1.5em;
+    float: right;    
+}
+

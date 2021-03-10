@@ -1,41 +1,47 @@
-<mat-drawer-container autosize>
+<mat-sidenav-container>
+    <mat-sidenav #topicnav mode="side" [style.width]="'15em'" opened>
+        <mat-selection-list #topiclist [multiple]="false" (selectionChange)="_topicSelected($event)">
+            <mat-list-option *ngFor='let topic of topics' [value]="topic" [selected]="topic===topics[selectedTopic]">
+                {{topic}}
+            </mat-list-option>
+        </mat-selection-list>
+    </mat-sidenav>
 
-    <mat-drawer #topiclist mode="side" disableClose="true" opened="true">
-        <button mat-mini-fab (click)="topicListExpanded = !topicListExpanded" color="primary" class="fab-button">
-            <mat-icon aria-label="Menu">menu</mat-icon>
-        </button>
+    <mat-sidenav-content>
 
-        <mat-nav-list>
-            <mat-list-item *ngFor='let topic of topics'>
-                <div *ngIf='topicListExpanded'>{{topic}}</div>
-            </mat-list-item>
-        </mat-nav-list>
+        <mat-sidenav-container>
+            <mat-sidenav #pagenav mode="side" [style.width]="'15em'" opened>
+                <mat-selection-list #pagelist [multiple]="false" (selectionChange)="_pageSelected($event)">
+                    <mat-list-option *ngFor='let page of pages' [value]="page" [selected]="page===pages[selectedPage]">
+                        {{page}}
+                    </mat-list-option>
+                </mat-selection-list>
+            </mat-sidenav>
 
-    </mat-drawer>
+            <mat-sidenav-content>
+                <div class="page-viewer">
+                    <span>
+                        <button mat-mini-fab (click)="topicnav.toggle();" color="primary" class="fab-button">
+                            <mat-icon aria-label="Menu">menu</mat-icon>
+                        </button>
+                        <button mat-mini-fab (click)="pagenav.toggle()" color="primary" class="fab-button">
+                            <mat-icon>date_range</mat-icon>
+                        </button>
+                    </span>
 
-    <mat-drawer-container autosize>
-        <mat-drawer #pagelist mode="side" disableClose="true" opened="true">
-            <button mat-mini-fab (click)="pageListExpanded = !pageListExpanded" color="primary" class="fab-button">
-                <mat-icon>date_range</mat-icon>
-            </button>
 
-            <mat-nav-list>
-                <mat-list-item *ngFor='let page of pages'>
-                    <div *ngIf='pageListExpanded'>{{page}}</div>
-                </mat-list-item>
-            </mat-nav-list>
+                    <blog-wysiwyg *ngIf="isNewpageMode"> </blog-wysiwyg>
 
-        </mat-drawer>
+                    <blog-page *ngIf="!isNewpageMode" [page]='pageContent'></blog-page>
 
-        <div class="example-sidenav-content">
-            <blog-wysiwyg> </blog-wysiwyg>
-            <!-- <hashcolon-blog-pageviewer [pageSrc]="'assets/pages/test.html'">
-            </hashcolon-blog-pageviewer> -->
-        </div>
-        <a href="blog/newpage" mat-mini-fab color="primary" class="fab-button add-button">
-            <mat-icon>add</mat-icon>
-        </a>
+                </div>
 
-    </mat-drawer-container>
+                <button mat-mini-fab color="primary" (click)="isNewpageMode=!isNewpageMode"
+                    class="fab-button add-button">
+                    <mat-icon>{{isNewpageMode?'replay':'add'}}</mat-icon>
+                </button>
+            </mat-sidenav-content>
 
-</mat-drawer-container>
+        </mat-sidenav-container>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -18,23 +18,17 @@
                 <input matInput [formControl]='tagsControl' (input)='_editTags()' />
             </mat-form-field>
 
-            <button mat-raised-button class="confirm-button" color='accent'>
+            <button mat-raised-button class="confirm-button" color='accent' onclick="hljs.highlightAll();">
                 Upload page
             </button>
-
-
-
         </mat-card>
-        <mat-form-field highlight-js appearance='outline' class="content-editor-box" color='accent'>
-            <textarea matInput class="content-editor" [formControl]='contentControl' (input)='_editContent()'
-                cdkTextareaAutosize #autosize="cdkTextareaAutosize">
-                </textarea>
-        </mat-form-field>
-        <!-- <ngx-codemirror #codemirror [ngModel]="editor.content" (ngModelChange)="testEditorContent($event)">
-        </ngx-codemirror> -->
+
+        <div class="codemirror-wrapper">
+            <blog-codemirror-editor [(code)]='editor.content'></blog-codemirror-editor>
+        </div>
 
     </div>
     <div class="division right">
-        <blog-page [page]='editor'></blog-page>
+        <blog-page #pageResult [page]='editor'></blog-page>
     </div>
 </div>

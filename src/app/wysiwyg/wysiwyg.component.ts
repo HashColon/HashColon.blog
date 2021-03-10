@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Form, FormControl } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { BlogPageComponent } from '@blog/page/blog-page.component';
 import { PageFormat } from '@blog/services/page-format';
 
 @Component({
@@ -8,6 +9,8 @@ import { PageFormat } from '@blog/services/page-format';
   styleUrls: ['./wysiwyg.component.scss']
 })
 export class WysiwygComponent implements OnInit {
+  //@ViewChild('codemirrorEditorView') codeEditorView: ElementRef;
+  @ViewChild(BlogPageComponent) pageView: BlogPageComponent;
 
   editor: PageFormat = {
     header: {
@@ -23,10 +26,7 @@ export class WysiwygComponent implements OnInit {
   dateControl: FormControl;
   contentControl: FormControl;
 
-  //view: PageFormat;
-
   constructor() {
-    //this.view = this.editor;
   }
 
   ngOnInit(): void {
@@ -56,5 +56,4 @@ export class WysiwygComponent implements OnInit {
   testEditorContent(e) {
 
   }
-
 }

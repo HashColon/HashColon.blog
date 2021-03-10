@@ -1,20 +1,33 @@
-<h1>
-    <span class="page-title">
-        <b>{{page.header.title}}</b>
+<div class="wrapper">
+
+    <h1>
+        <span class="page-title" *ngIf="page && page.header && page.header.title">
+            <b>{{page.header.title}}</b>
+        </span>
+    </h1>
+
+    <!-- <br /> -->
+
+    <span class="page-datetime" *ngIf="page && page.header && page.header.datetime">
+        {{_getDateTimeString(page.header.datetime)}}
     </span>
-</h1>
 
-<span class="page-datetime">
-    {{page.header.datetime}}
-</span>
+    <br />
 
-<span class="page-topic">
-    {{page.header.topic}}
-</span>
+    <span class="page-topic" *ngIf="page && page.header && page.header.topic">
+        <mat-chip color="primary" selected>{{page.header.topic}}</mat-chip>
+    </span>
 
-<div class="page-content" [innerHTML]='page.content'>
-</div>
+    <br /><br />
 
-<div class="page-tags">
-    {{page.header.tags}}
+    <div class="page-content" *ngIf="page && page.content"
+        [innerHTML]='sanitizer.bypassSecurityTrustHtml(page.content)'>
+    </div>
+
+    <mat-chip-list class="page-tags" *ngIf="page && page.header && page.header.tags">
+        <mat-chip color="accent" selected *ngFor="let tag of page.header.tags">
+            #{{tag}}
+        </mat-chip>
+    </mat-chip-list>
+
 </div>
