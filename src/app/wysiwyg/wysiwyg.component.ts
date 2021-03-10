@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { BlogPageComponent } from '@blog/page/blog-page.component';
 import { PageFormat } from '@blog/services/page-format';
+//import { BackendConnectorService } from '@HashColon'
 
 @Component({
   selector: 'blog-wysiwyg',
